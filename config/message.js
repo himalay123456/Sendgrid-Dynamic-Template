@@ -7,4 +7,6 @@ module.exports = {
     CREATE_CONTACT_FAIL: 'Create Contact Fail',
     SUBSCRIBE_SUCCESS: 'Subscribe Success',
     SUBSCRIBE_FAIL: 'Subscribe Fail',
+    PDF_FETCH_SUCCESS: 'Pdf Fetch Success',
+    PDF_FETCH_FAIL: 'Pdf Fetch Fail',
 }

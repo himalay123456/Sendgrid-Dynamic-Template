@@ -3,6 +3,8 @@ const requestHandler = require('../../helper/requestHandler');
 const dbServices = require('../../dbServices/v1/user');
 const message = require('../../config/message');
 const email = require('../../helper/email');
+const fs = require('fs');
+const path = require("path");
 
 const { handleResponse, handleError } = requestHandler;
 const{ createContactData, subscribe } = dbServices;
@@ -74,6 +76,48 @@ module.exports = {
                             err: err,
                         })
         }
-    }
+    },
+
+    whitepaper: async(req, res) => {
+      try{
+        const dirPath = path.join(__dirname, '../../', "pdfs/whitepaper.pdf");
+        var file = fs.createReadStream(dirPath);
+        file.pipe(res);
+      }catch(err){
+        return handleError({
+            res,
+            err_msg: 'Server Error',
+            err: err,
+        })
+      }
+    },
+
+    onepager: async(req, res) => {
+        try{
+          const dirPath = path.join(__dirname, '../../', "pdfs/onepager.pdf");
+          var file = fs.createReadStream(dirPath);
+          file.pipe(res);
+        }catch(err){
+          return handleError({
+              res,
+              err_msg: 'Server Error',
+              err: err,
+          })
+        }
+      },
+
+      audit: async(req, res) => {
+        try{
+          const dirPath = path.join(__dirname, '../../', "pdfs/audit.pdf");
+          var file = fs.createReadStream(dirPath);
+          file.pipe(res);
+        }catch(err){
+          return handleError({
+              res,
+              err_msg: 'Server Error',
+              err: err,
+          })
+        }
+      }
 
 }
